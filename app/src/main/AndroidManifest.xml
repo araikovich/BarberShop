@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.HairstyleCategoryActivity"/>
+        <activity android:name=".activities.HairstyleDetailActivity"/>
     </application>
 
 </manifest>

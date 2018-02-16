@@ -28,6 +28,10 @@ public class DBHelper extends SQLiteOpenHelper {
                 + "genderId,"
                 + "title text,"
                 + "imageUrl text" + ");");
+
+        db.execSQL("create table detail ("
+                + "hairstyleId,"
+                + "imageUrl text" + ");");
     }
 
     @Override

@@ -103,7 +103,7 @@ public class HairstyleCategoryModel {
         protected void onPostExecute(ArrayList<HairstyleCategoryCard> cards) {
             super.onPostExecute(cards);
             isdLoading = false;
-            if(cards.size() > 0)
+            if(cards!= null && cards.size() > 0)
                 callBack.onLoadSuccess(cards);
             else
                 callBack.onFail("Null table");

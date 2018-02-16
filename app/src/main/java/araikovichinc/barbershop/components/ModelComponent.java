@@ -2,6 +2,7 @@ package araikovichinc.barbershop.components;
 
 import araikovichinc.barbershop.models.GenderCategoryModel;
 import araikovichinc.barbershop.models.HairstyleCategoryModel;
+import araikovichinc.barbershop.models.HairstyleDetailModel;
 import araikovichinc.barbershop.modules.ApiModule;
 import araikovichinc.barbershop.modules.ContextModule;
 import araikovichinc.barbershop.modules.DataBaseModule;
@@ -16,4 +17,5 @@ import dagger.Component;
 public interface ModelComponent {
     GenderCategoryModel getGenderCategoryModel();
     HairstyleCategoryModel getHairstyleCategoryModel();
+    HairstyleDetailModel getHairstyleDetailModel();
 }

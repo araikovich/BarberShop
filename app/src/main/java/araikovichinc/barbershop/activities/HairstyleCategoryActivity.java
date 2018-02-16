@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 import araikovichinc.barbershop.R;
 import araikovichinc.barbershop.adapters.HairstyleCategoryRecyclerAdapter;
+import araikovichinc.barbershop.callbacks.CategoryOnClickListener;
 import araikovichinc.barbershop.components.DaggerModelComponent;
 import araikovichinc.barbershop.components.ModelComponent;
 import araikovichinc.barbershop.models.GenderCategoryModel;
@@ -83,6 +84,13 @@ public class HairstyleCategoryActivity extends MvpAppCompatActivity implements H
         }
         recyclerView.setAdapter(adapter);
 
+        adapter.setOnClickListener(new CategoryOnClickListener() {
+            @Override
+            public void onClick(int cardId, String title) {
+                presenter.next(cardId, title);
+            }
+        });
+
         //getting model
         ModelComponent component = DaggerModelComponent.builder().contextModule(new ContextModule(this)).build();
         HairstyleCategoryModel model = component.getHairstyleCategoryModel();
@@ -110,6 +118,14 @@ public class HairstyleCategoryActivity extends MvpAppCompatActivity implements H
     @Override
     public void showRefresh(int visibility) {
         refresh.setVisibility(visibility);
+    }
+
+    @Override
+    public void nextActivity(int hairstyleId, String hairstyleTitle) {
+        Intent intent = new Intent(HairstyleCategoryActivity.this, HairstyleDetailActivity.class);
+        intent.putExtra("hairstyleId", hairstyleId);
+        intent.putExtra("hairstyleTitle", hairstyleTitle);
+        startActivity(intent);
     }
 
     @Override

@@ -66,4 +66,8 @@ public class HairstyleCategoryActivityPresenter extends MvpPresenter<HairstyleCa
         getViewState().setTitle(title);
     }
 
+    public void next(int hairstyleId, String hairstyleTitle){
+        getViewState().nextActivity(hairstyleId, hairstyleTitle);
+    }
+
 }

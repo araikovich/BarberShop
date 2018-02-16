@@ -12,8 +12,17 @@ public class HairstyleDetailCard {
     @Expose
     private String imageUrl;
 
-    public HairstyleDetailCard(String imageUrl) {
+    @SerializedName("hairstyleId")
+    @Expose
+    private int hairstyleId;
+
+    public HairstyleDetailCard(String imageUrl, int hairstyleId) {
         this.imageUrl = imageUrl;
+        this.hairstyleId = hairstyleId;
+    }
+
+    public HairstyleDetailCard(){
+
     }
 
     public String getImageUrl() {
@@ -22,5 +31,13 @@ public class HairstyleDetailCard {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public int getHairstyleId() {
+        return hairstyleId;
+    }
+
+    public void setHairstyleId(int hairstyleId) {
+        this.hairstyleId = hairstyleId;
     }
 }
