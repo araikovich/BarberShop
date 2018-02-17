@@ -92,6 +92,7 @@ public class HairstyleCategoryActivity extends MvpAppCompatActivity implements H
         });
 
         //getting model
+        //произойдет ли здесь утечка памяти из-за передачи Context в Model?
         ModelComponent component = DaggerModelComponent.builder().contextModule(new ContextModule(this)).build();
         HairstyleCategoryModel model = component.getHairstyleCategoryModel();
         presenter.setModel(model);
