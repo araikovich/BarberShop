@@ -6,6 +6,7 @@ import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 
 import araikovichinc.barbershop.R;
+import araikovichinc.barbershop.fargments.BookCalendarFragment;
 import araikovichinc.barbershop.fargments.GenderCategoriesFragment;
 import araikovichinc.barbershop.mvp.views.HomeActivityView;
 
@@ -20,16 +21,17 @@ public class HomeActivityPresenter extends MvpPresenter<HomeActivityView> {
 
     public void changePage(int itemId){
         if(currPage == itemId)
-            return;;
+            return;
+        currPage = itemId;
         Fragment fragment;
         switch (itemId){
             case R.id.nav_hairstyles:
-                currPage = itemId;
                 fragment = new GenderCategoriesFragment();
                 getViewState().setFragment(fragment);
                 break;
             case R.id.nav_book:
-
+                fragment = new BookCalendarFragment();
+                getViewState().setFragment(fragment);
                 break;
             case R.id.nav_where_we_are:
 

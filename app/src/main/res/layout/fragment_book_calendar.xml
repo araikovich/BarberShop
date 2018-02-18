@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        app:mcv_selectionColor="@color/colorBlack"
+        android:id="@+id/calendar">
+
+    </com.prolificinteractive.materialcalendarview.MaterialCalendarView>
+
+    <info.hoang8f.widget.FButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:buttonColor="@color/colorBlack"
+        app:shadowEnabled="true"
+        android:text="@string/book"
+        android:textColor="@color/colorWhite"
+        app:cornerRadius="15dp"
+        android:id="@+id/book_btn"
+        android:layout_below="@+id/calendar"
+        android:layout_marginTop="45dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        app:shadowHeight="4dp"/>
+</RelativeLayout>

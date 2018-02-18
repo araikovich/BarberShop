@@ -23,6 +23,7 @@
         </activity>
         <activity android:name=".activities.HairstyleCategoryActivity"/>
         <activity android:name=".activities.HairstyleDetailActivity"/>
+        <activity android:name=".activities.SelectGenderActivity"/>
     </application>
 
 </manifest>

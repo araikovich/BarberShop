@@ -101,6 +101,11 @@ public class HairstyleCategoryActivity extends MvpAppCompatActivity implements H
     }
 
     @Override
+    public void setProgressBar(int visibility) {
+        progressBar.setVisibility(visibility);
+    }
+
+    @Override
     public void setAdapter(ArrayList<HairstyleCategoryCard> cards) {
         adapter.setCards(cards);
     }
@@ -128,9 +133,4 @@ public class HairstyleCategoryActivity extends MvpAppCompatActivity implements H
         startActivity(intent);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d("MyLogs", "On Destroy");
-    }
 }

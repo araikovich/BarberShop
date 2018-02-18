@@ -12,7 +12,7 @@ import araikovichinc.barbershop.pojo.HairstyleDetailCard;
  */
 
 public interface HairstyleDetailActivityView extends MvpView {
-    void setProgress(int visibility);
+    void setProgressBar(int visibility);
     void setAdapter(ArrayList<HairstyleDetailCard> cards);
     void setTitle(String title);
     void showToast(String toast);

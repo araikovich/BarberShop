@@ -75,7 +75,7 @@ public class GenderCategoriesFragment extends MvpAppCompatFragment implements Ge
     @Override
     public void setTitle(String title) {
         if(listener!=null)
-            listener.setTitle(getResources().getString(R.string.hairstyles));
+            listener.setTitle(title);
     }
 
     @Override

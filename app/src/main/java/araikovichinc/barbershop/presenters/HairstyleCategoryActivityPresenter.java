@@ -38,7 +38,7 @@ public class HairstyleCategoryActivityPresenter extends MvpPresenter<HairstyleCa
             @Override
             public void onResponse(Call<ArrayList<HairstyleCategoryCard>> call, Response<ArrayList<HairstyleCategoryCard>> response) {
                 getViewState().setAdapter(response.body());
-                getViewState().setProgress(View.GONE);
+                getViewState().setProgressBar(View.GONE);
                 model.saveCardToDb(response.body());
             }
 
@@ -48,12 +48,12 @@ public class HairstyleCategoryActivityPresenter extends MvpPresenter<HairstyleCa
                     @Override
                     public void onLoadSuccess(ArrayList<HairstyleCategoryCard> result) {
                         getViewState().setAdapter(result);
-                        getViewState().setProgress(View.GONE);
+                        getViewState().setProgressBar(View.GONE);
                     }
 
                     @Override
                     public void onFail(String message) {
-                        getViewState().setProgress(View.GONE);
+                        getViewState().setProgressBar(View.GONE);
                         getViewState().showRefresh(View.VISIBLE);
                         getViewState().showToast("Пробдемы с сетью, попробуйте еще раз");
                     }

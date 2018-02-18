@@ -33,13 +33,13 @@ public class HairstyleDetailActivityPresenter extends MvpPresenter<HairstyleDeta
         if(model.isdLoading()){
             return;
         }else {
-            getViewState().setProgress(View.VISIBLE);
+            getViewState().setProgressBar(View.VISIBLE);
             getViewState().showRefresh(View.GONE);
             model.loadDetailFromServer(hairstyleId, new Callback<ArrayList<HairstyleDetailCard>>() {
                 @Override
                 public void onResponse(Call<ArrayList<HairstyleDetailCard>> call, Response<ArrayList<HairstyleDetailCard>> response) {
                     getViewState().setAdapter(response.body());
-                    getViewState().setProgress(View.GONE);
+                    getViewState().setProgressBar(View.GONE);
                     model.saveDetail(response.body());
                 }
 
@@ -49,13 +49,13 @@ public class HairstyleDetailActivityPresenter extends MvpPresenter<HairstyleDeta
                         @Override
                         public void onLoadSuccess(ArrayList<HairstyleDetailCard> result) {
                             getViewState().setAdapter(result);
-                            getViewState().setProgress(View.GONE);
+                            getViewState().setProgressBar(View.GONE);
                         }
 
                         @Override
                         public void onFail(String message) {
                             getViewState().showRefresh(View.VISIBLE);
-                            getViewState().setProgress(View.GONE);
+                            getViewState().setProgressBar(View.GONE);
                             getViewState().showToast("Проблемы с сетью, попроюуйте еще раз");
                         }
                     });

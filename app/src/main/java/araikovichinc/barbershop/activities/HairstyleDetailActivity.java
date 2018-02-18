@@ -89,6 +89,11 @@ public class HairstyleDetailActivity extends MvpAppCompatActivity implements Hai
     }
 
     @Override
+    public void setProgressBar(int visibility) {
+        progressBar.setVisibility(visibility);
+    }
+
+    @Override
     public void setAdapter(ArrayList<HairstyleDetailCard> cards) {
         adapter.setCards(cards);
     }
@@ -107,4 +112,7 @@ public class HairstyleDetailActivity extends MvpAppCompatActivity implements Hai
     public void showRefresh(int visibility) {
         refresh.setVisibility(visibility);
     }
+
+
+
 }
