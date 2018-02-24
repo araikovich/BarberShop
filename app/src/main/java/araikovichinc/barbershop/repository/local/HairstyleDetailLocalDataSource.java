@@ -1,54 +1,47 @@
-package araikovichinc.barbershop.models;
+package araikovichinc.barbershop.repository.local;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 
 import java.util.ArrayList;
 
-import araikovichinc.barbershop.api.ServerApi;
+import javax.inject.Inject;
+
 import araikovichinc.barbershop.callbacks.LoadCallBack;
-import araikovichinc.barbershop.pojo.HairstyleCategoryCard;
+import araikovichinc.barbershop.datasource.HairstyleDetailDataSource;
 import araikovichinc.barbershop.pojo.HairstyleDetailCard;
 import araikovichinc.barbershop.utils.DBHelper;
-import retrofit2.Call;
-import retrofit2.Callback;
 
 /**
- * Created by Tigran on 12.02.2018.
+ * Created by Tigran on 24.02.2018.
  */
 
-public class HairstyleDetailModel {
-    ServerApi api;
-    DBHelper dbHelper;
-    private boolean isdLoading;
+public class HairstyleDetailLocalDataSource implements HairstyleDetailDataSource {
 
-    public HairstyleDetailModel(ServerApi api, DBHelper dbHelper) {
-        this.api = api;
-        this.dbHelper = dbHelper;
+    private DBHelper dbHelper;
+
+    @Inject
+    public HairstyleDetailLocalDataSource(Context context){
+        dbHelper = new DBHelper(context);
     }
 
-    public void loadDetailFromServer(int hairstyleId, Callback callback){
-        Call<ArrayList<HairstyleDetailCard>> call = api.getHairstyleDetailing(hairstyleId);
-        call.enqueue(callback);
-    }
 
-    public void saveDetail(ArrayList<HairstyleDetailCard> cards){
-        SaveDetailCardsTask task = new SaveDetailCardsTask();
-        task.execute(cards);
-    }
-
-    public void loadCardsFromDb(int hairstyleId, LoadCallBack callBack){
+    @Override
+    public void loadHairstyleDetail(int hairstyleId, LoadCallBack callBack) {
         LoadDetailCardsTask task = new LoadDetailCardsTask(hairstyleId, callBack);
         task.execute();
     }
 
-    public boolean isdLoading() {
-        return isdLoading;
+    @Override
+    public void saveHairstyleDetail(ArrayList<HairstyleDetailCard> cards) {
+        SaveDetailCardsTask task = new SaveDetailCardsTask();
+        task.execute(cards);
     }
 
-    class SaveDetailCardsTask extends AsyncTask<ArrayList<HairstyleDetailCard>, Void, Void> {
+    private class SaveDetailCardsTask extends AsyncTask<ArrayList<HairstyleDetailCard>, Void, Void> {
 
         @Override
         protected Void doInBackground(ArrayList<HairstyleDetailCard>... params) {
@@ -66,7 +59,7 @@ public class HairstyleDetailModel {
 
     }
 
-    class LoadDetailCardsTask extends AsyncTask<Void, Void, ArrayList<HairstyleDetailCard>>{
+    private class LoadDetailCardsTask extends AsyncTask<Void, Void, ArrayList<HairstyleDetailCard>>{
 
         LoadCallBack callBack;
         int hairstyleId;
@@ -78,7 +71,6 @@ public class HairstyleDetailModel {
 
         @Override
         protected ArrayList<HairstyleDetailCard> doInBackground(Void... params) {
-            isdLoading = true;
             ArrayList<HairstyleDetailCard> cards = new ArrayList<>();
             Cursor cursor = dbHelper.getReadableDatabase().query("detail", null, null, null, null, null, null);
             while (cursor.moveToNext()){
@@ -97,7 +89,6 @@ public class HairstyleDetailModel {
         @Override
         protected void onPostExecute(ArrayList<HairstyleDetailCard> cards) {
             super.onPostExecute(cards);
-            isdLoading = false;
             if(cards != null && cards.size() > 0)
                 callBack.onLoadSuccess(cards);
             else

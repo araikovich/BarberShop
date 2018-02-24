@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,10 +23,6 @@ import araikovichinc.barbershop.activities.HairstyleCategoryActivity;
 import araikovichinc.barbershop.adapters.GenderCategoriesRecyclerAdapter;
 import araikovichinc.barbershop.callbacks.CategoryOnClickListener;
 import araikovichinc.barbershop.callbacks.OnFragmentInteractionListener;
-import araikovichinc.barbershop.components.DaggerModelComponent;
-import araikovichinc.barbershop.components.ModelComponent;
-import araikovichinc.barbershop.models.GenderCategoryModel;
-import araikovichinc.barbershop.modules.ContextModule;
 import araikovichinc.barbershop.mvp.views.GenderCategoriesFragmentView;
 import araikovichinc.barbershop.pojo.GenderCard;
 import araikovichinc.barbershop.presenters.GenderCategoriesFragmentPresenter;
@@ -70,6 +67,8 @@ public class GenderCategoriesFragment extends MvpAppCompatFragment implements Ge
     public void onDetach() {
         super.onDetach();
         listener = null;
+        //
+        adapter.setContext(null);
     }
 
     @Override
@@ -114,9 +113,6 @@ public class GenderCategoriesFragment extends MvpAppCompatFragment implements Ge
             }
         });
 
-        ModelComponent component = DaggerModelComponent.builder().contextModule(new ContextModule(getContext())).build();
-        GenderCategoryModel model = component.getGenderCategoryModel();
-        presenter.setModel(model);
 
         if(!adapter.isLoaded())
         presenter.loadData();
@@ -124,6 +120,7 @@ public class GenderCategoriesFragment extends MvpAppCompatFragment implements Ge
 
     @Override
     public void nextActivity(int genderId, String title){
+        Log.d("MyLogs", "Call nextActivity");
         Intent intent = new Intent(getActivity(), HairstyleCategoryActivity.class);
         intent.putExtra("genderId", genderId);
         intent.putExtra("title", title);
@@ -139,4 +136,5 @@ public class GenderCategoriesFragment extends MvpAppCompatFragment implements Ge
     public void setRefreshVisibility(int visibility) {
         reloadBtn.setVisibility(visibility);
     }
+
 }

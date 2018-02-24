@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import javax.inject.Inject;
+
 /**
  * Created by Tigran on 12.02.2018.
  */
@@ -12,6 +14,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     final public static String DATA_BASE_NAME = "barbershop_db";
 
+    @Inject
     public DBHelper(Context context) {
         super(context, DATA_BASE_NAME, null, 1);
     }

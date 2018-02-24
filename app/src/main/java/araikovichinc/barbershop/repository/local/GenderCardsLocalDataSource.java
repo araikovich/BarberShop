@@ -1,58 +1,46 @@
-package araikovichinc.barbershop.models;
+package araikovichinc.barbershop.repository.local;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 
 import java.util.ArrayList;
 
-import araikovichinc.barbershop.api.ServerApi;
+import javax.inject.Inject;
+
 import araikovichinc.barbershop.callbacks.LoadCallBack;
+import araikovichinc.barbershop.datasource.GenderCardsDataSource;
 import araikovichinc.barbershop.pojo.GenderCard;
 import araikovichinc.barbershop.utils.DBHelper;
-import retrofit2.Call;
-import retrofit2.Callback;
 
 /**
- * Created by Tigran on 12.02.2018.
+ * Created by Tigran on 23.02.2018.
  */
 
-public class GenderCategoryModel {
+public class GenderCardsLocalDataSource implements GenderCardsDataSource {
 
-    ServerApi api;
-    DBHelper dbHelper;
-    boolean isLoading = false;
+    private DBHelper dbHelper;
 
-    public GenderCategoryModel(ServerApi api, DBHelper dbHelper){
-        this.api = api;
-        this.dbHelper = dbHelper;
+    @Inject
+    public GenderCardsLocalDataSource(Context context){
+        dbHelper = new DBHelper(context);
     }
 
-    public void loadGenderCards(Callback callback){
-        Call<ArrayList<GenderCard>> cardCall = api.getSexCategories();
-        cardCall.enqueue(callback);
-    }
-
-    public boolean isLoading(){
-        return isLoading;
-    }
-
-    public void setLoading(boolean loading){
-        this.isLoading = loading;
-    }
-
-    public void saveGenderCards(ArrayList<GenderCard> cards){
-        SaveGenderCardsTadk tadk = new SaveGenderCardsTadk();
-        tadk.execute(cards);
-    }
-
-    public void loadGenderCardsFormDb(LoadCallBack callBack){
-        LoadGenderCardsTask task = new LoadGenderCardsTask(callBack);
+    @Override
+    public void getCards(LoadCallBack callback) {
+        LoadGenderCardsTask task = new LoadGenderCardsTask(callback);
         task.execute();
     }
 
-    class SaveGenderCardsTadk extends AsyncTask<ArrayList<GenderCard>, Void, Void>{
+    @Override
+    public void saveCardsToDb(ArrayList<GenderCard> cards) {
+        SaveGenderCardsTask task = new SaveGenderCardsTask();
+        task.execute(cards);
+    }
+
+    private class SaveGenderCardsTask extends AsyncTask<ArrayList<GenderCard>, Void, Void> {
 
         @Override
         protected Void doInBackground(ArrayList<GenderCard>... params) {
@@ -68,10 +56,9 @@ public class GenderCategoryModel {
             }
             return null;
         }
-
     }
 
-    class LoadGenderCardsTask extends AsyncTask<Void, Void, ArrayList<GenderCard>>{
+    private class LoadGenderCardsTask extends AsyncTask<Void, Void, ArrayList<GenderCard>>{
 
         LoadCallBack callBack;
 
@@ -81,7 +68,6 @@ public class GenderCategoryModel {
 
         @Override
         protected ArrayList<GenderCard> doInBackground(Void... params) {
-            isLoading = true;
             ArrayList<GenderCard> cards = new ArrayList<>();
             Cursor cursor = dbHelper.getReadableDatabase().query("genders", null, null, null, null, null, null);
             while (cursor.moveToNext()){
@@ -98,12 +84,12 @@ public class GenderCategoryModel {
         @Override
         protected void onPostExecute(ArrayList<GenderCard> cards) {
             super.onPostExecute(cards);
-            isLoading = false;
             if(cards.size() > 0)
                 callBack.onLoadSuccess(cards);
             else
                 callBack.onFail("Null table");
         }
     }
+
 
 }

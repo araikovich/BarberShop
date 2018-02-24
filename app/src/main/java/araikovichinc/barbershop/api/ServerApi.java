@@ -2,6 +2,8 @@ package araikovichinc.barbershop.api;
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
 import araikovichinc.barbershop.pojo.GenderCard;
 import araikovichinc.barbershop.pojo.HairstyleCategoryCard;
 import araikovichinc.barbershop.pojo.HairstyleDetailCard;

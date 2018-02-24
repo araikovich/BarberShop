@@ -16,12 +16,7 @@ import java.util.ArrayList;
 
 import araikovichinc.barbershop.R;
 import araikovichinc.barbershop.adapters.HairstyleDetailRecyclerAdapter;
-import araikovichinc.barbershop.components.DaggerModelComponent;
-import araikovichinc.barbershop.components.ModelComponent;
-import araikovichinc.barbershop.models.HairstyleDetailModel;
-import araikovichinc.barbershop.modules.ContextModule;
 import araikovichinc.barbershop.mvp.views.HairstyleDetailActivityView;
-import araikovichinc.barbershop.pojo.HairstyleCategoryCard;
 import araikovichinc.barbershop.pojo.HairstyleDetailCard;
 import araikovichinc.barbershop.presenters.HairstyleDetailActivityPresenter;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -78,9 +73,6 @@ public class HairstyleDetailActivity extends MvpAppCompatActivity implements Hai
             adapter.setContext(this);
         recyclerView.setAdapter(adapter);
 
-        ModelComponent component = DaggerModelComponent.builder().contextModule(new ContextModule(this)).build();
-        HairstyleDetailModel model = component.getHairstyleDetailModel();
-        presenter.setModel(model);
 
         if(!adapter.isLoaded())
             presenter.loadCards(intent.getIntExtra("hairstyleId", 0));
@@ -112,7 +104,5 @@ public class HairstyleDetailActivity extends MvpAppCompatActivity implements Hai
     public void showRefresh(int visibility) {
         refresh.setVisibility(visibility);
     }
-
-
 
 }

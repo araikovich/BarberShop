@@ -1,60 +1,51 @@
-package araikovichinc.barbershop.models;
+package araikovichinc.barbershop.repository.local;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
-import android.support.v4.app.LoaderManager;
 
 import java.util.ArrayList;
 
-import araikovichinc.barbershop.api.ServerApi;
+import javax.inject.Inject;
+
 import araikovichinc.barbershop.callbacks.LoadCallBack;
+import araikovichinc.barbershop.datasource.HairstyleCategoryDataSource;
 import araikovichinc.barbershop.pojo.HairstyleCategoryCard;
 import araikovichinc.barbershop.utils.DBHelper;
-import retrofit2.Call;
-import retrofit2.Callback;
 
 /**
- * Created by Tigran on 12.02.2018.
+ * Created by Tigran on 24.02.2018.
  */
 
-public class HairstyleCategoryModel {
+public class HairstyleCategoryLocalDataSource implements HairstyleCategoryDataSource {
 
-    private ServerApi api;
-    private DBHelper db;
-    private boolean isdLoading = false;
+    DBHelper dbHelper;
 
-    public HairstyleCategoryModel(ServerApi api, DBHelper db){
-        this.api = api;
-        this.db = db;
+    @Inject
+    public HairstyleCategoryLocalDataSource(Context context){
+        dbHelper = new DBHelper(context);
     }
 
-    public void loadCategoriesFromServer(int genderId, Callback callback){
-        Call<ArrayList<HairstyleCategoryCard>> call = api.getHairstyleCategories(genderId);
-        call.enqueue(callback);
-    }
-
-    public void saveCardToDb(ArrayList<HairstyleCategoryCard> cards){
-        SaveCategoryCardsTask task = new SaveCategoryCardsTask();
-        task.execute(cards);
-    }
-
-    public void getCardsFromDb(int genderId, LoadCallBack callBack){
+    @Override
+    public void getHairstyleCategories(int genderId, LoadCallBack callBack) {
         LoadCategoryCardsTask task = new LoadCategoryCardsTask(genderId, callBack);
         task.execute();
     }
 
-    public boolean isIsdLoading(){
-        return isdLoading;
+    @Override
+    public void saveCategories(ArrayList<HairstyleCategoryCard> cards) {
+        SaveCategoryCardsTask task = new SaveCategoryCardsTask();
+        task.execute(cards);
     }
 
-    class SaveCategoryCardsTask extends AsyncTask<ArrayList<HairstyleCategoryCard>, Void, Void> {
+    private class SaveCategoryCardsTask extends AsyncTask<ArrayList<HairstyleCategoryCard>, Void, Void> {
 
         @Override
         protected Void doInBackground(ArrayList<HairstyleCategoryCard>... params) {
             ContentValues contentValues = new ContentValues();
-            SQLiteDatabase database = db.getWritableDatabase();
+            SQLiteDatabase database = dbHelper.getWritableDatabase();
             database.delete("category", null, null);
             for(int i = 0; i<params[0].size(); i++){
                 contentValues.put("id", params[0].get(i).getId());
@@ -69,7 +60,7 @@ public class HairstyleCategoryModel {
 
     }
 
-    class LoadCategoryCardsTask extends AsyncTask<Void, Void, ArrayList<HairstyleCategoryCard>>{
+    private class LoadCategoryCardsTask extends AsyncTask<Void, Void, ArrayList<HairstyleCategoryCard>>{
 
         LoadCallBack callBack;
         int genderId;
@@ -81,9 +72,8 @@ public class HairstyleCategoryModel {
 
         @Override
         protected ArrayList<HairstyleCategoryCard> doInBackground(Void... params) {
-            isdLoading = true;
             ArrayList<HairstyleCategoryCard> cards = new ArrayList<>();
-            Cursor cursor = db.getReadableDatabase().query("category", null, null, null, null, null, null);
+            Cursor cursor = dbHelper.getReadableDatabase().query("category", null, null, null, null, null, null);
             while (cursor.moveToNext()){
                 if(cursor.getInt(cursor.getColumnIndex("genderId")) != genderId){
                     return null;
@@ -102,7 +92,6 @@ public class HairstyleCategoryModel {
         @Override
         protected void onPostExecute(ArrayList<HairstyleCategoryCard> cards) {
             super.onPostExecute(cards);
-            isdLoading = false;
             if(cards!= null && cards.size() > 0)
                 callBack.onLoadSuccess(cards);
             else

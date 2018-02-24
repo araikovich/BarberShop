@@ -1,11 +1,13 @@
 package araikovichinc.barbershop.presenters;
 
 import android.support.v4.app.Fragment;
+import android.util.Log;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 
 import araikovichinc.barbershop.R;
+import araikovichinc.barbershop.activities.HomeActivity;
 import araikovichinc.barbershop.fargments.BookCalendarFragment;
 import araikovichinc.barbershop.fargments.GenderCategoriesFragment;
 import araikovichinc.barbershop.mvp.views.HomeActivityView;
@@ -16,6 +18,10 @@ import araikovichinc.barbershop.mvp.views.HomeActivityView;
 
 @InjectViewState
 public class HomeActivityPresenter extends MvpPresenter<HomeActivityView> {
+
+    public HomeActivityPresenter(){
+        Log.d("MyLogs", "HomeActivityPresenter");
+    }
 
     int currPage;
 

@@ -16,14 +16,11 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
 import araikovichinc.barbershop.R;
 import araikovichinc.barbershop.adapters.HairstyleCategoryRecyclerAdapter;
 import araikovichinc.barbershop.callbacks.CategoryOnClickListener;
-import araikovichinc.barbershop.components.DaggerModelComponent;
-import araikovichinc.barbershop.components.ModelComponent;
-import araikovichinc.barbershop.models.GenderCategoryModel;
-import araikovichinc.barbershop.models.HairstyleCategoryModel;
-import araikovichinc.barbershop.modules.ContextModule;
 import araikovichinc.barbershop.mvp.views.HairstyleCategoryActivityView;
 import araikovichinc.barbershop.pojo.HairstyleCategoryCard;
 import araikovichinc.barbershop.presenters.HairstyleCategoryActivityPresenter;
@@ -59,6 +56,8 @@ public class HairstyleCategoryActivity extends MvpAppCompatActivity implements H
 
         //set up toolbar;
         final Intent intent = getIntent();
+        String s = intent.getStringExtra("title");
+        Log.d("MyLogs", s);
         presenter.changetitle(intent.getStringExtra("title"));
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_back));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -91,10 +90,7 @@ public class HairstyleCategoryActivity extends MvpAppCompatActivity implements H
             }
         });
 
-        //getting model
-        ModelComponent component = DaggerModelComponent.builder().contextModule(new ContextModule(this)).build();
-        HairstyleCategoryModel model = component.getHairstyleCategoryModel();
-        presenter.setModel(model);
+
         //load data
         if (!adapter.isLoaded())
             presenter.setCards(intent.getIntExtra("genderId", 0));

@@ -9,6 +9,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
@@ -34,6 +35,7 @@ public class HomeActivity extends MvpAppCompatActivity implements NavigationView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Log.d("MyLogs", "Home activity onCreate");
         initViews();
     }
 
@@ -58,7 +60,8 @@ public class HomeActivity extends MvpAppCompatActivity implements NavigationView
         return true;
     }
 
-    private void initViews(){
+    @Override
+    public void initViews(){
         //init toolbar
         toolbar = (Toolbar) findViewById(R.id.home_toolbar);
         setSupportActionBar(toolbar);

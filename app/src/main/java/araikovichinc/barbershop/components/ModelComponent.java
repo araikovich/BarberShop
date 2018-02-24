@@ -1,21 +1,23 @@
 package araikovichinc.barbershop.components;
 
-import araikovichinc.barbershop.models.GenderCategoryModel;
-import araikovichinc.barbershop.models.HairstyleCategoryModel;
-import araikovichinc.barbershop.models.HairstyleDetailModel;
+import com.arellomobile.mvp.MvpPresenter;
+
 import araikovichinc.barbershop.modules.ApiModule;
 import araikovichinc.barbershop.modules.ContextModule;
 import araikovichinc.barbershop.modules.DataBaseModule;
-import araikovichinc.barbershop.modules.ModelsModule;
+import araikovichinc.barbershop.modules.ReservationModule;
+import araikovichinc.barbershop.presenters.GenderCategoriesFragmentPresenter;
+import araikovichinc.barbershop.presenters.HairstyleCategoryActivityPresenter;
+import araikovichinc.barbershop.presenters.HairstyleDetailActivityPresenter;
 import dagger.Component;
 
 /**
  * Created by Tigran on 13.02.2018.
  */
 
-@Component(modules = ModelsModule.class)
+@Component(modules = {ApiModule.class, ContextModule.class, DataBaseModule.class})
 public interface ModelComponent {
-    GenderCategoryModel getGenderCategoryModel();
-    HairstyleCategoryModel getHairstyleCategoryModel();
-    HairstyleDetailModel getHairstyleDetailModel();
+    void inject(HairstyleCategoryActivityPresenter presenter);
+    void inject(HairstyleDetailActivityPresenter presenter);
+    void inject(GenderCategoriesFragmentPresenter presenter);
 }

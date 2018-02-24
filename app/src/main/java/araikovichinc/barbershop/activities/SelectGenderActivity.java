@@ -1,7 +1,9 @@
 package araikovichinc.barbershop.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -10,6 +12,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.bumptech.glide.Glide;
 
 import araikovichinc.barbershop.R;
+import araikovichinc.barbershop.pojo.Reservation;
 
 /**
  * Created by Tigran on 17.02.2018.
@@ -37,6 +40,12 @@ public class SelectGenderActivity extends MvpAppCompatActivity {
         toolbar = (Toolbar)findViewById(R.id.select_gender_toolbar);
         manBtn = (Button)findViewById(R.id.man_btn);
         womanBtn = (Button)findViewById(R.id.woman_btn);
+
+        Intent intent = getIntent();
+        Reservation reservation = (Reservation) intent.getSerializableExtra("Reservation");
+        Log.d("MyLogs", reservation.getDay() + "");
+
+
 
         toolbar.setTitle("Выберете пол");
         toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_back));
