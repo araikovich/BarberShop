@@ -24,7 +24,8 @@
         </activity>
         <activity android:name=".activities.HairstyleCategoryActivity"/>
         <activity android:name=".activities.HairstyleDetailActivity"/>
-        <activity android:name=".activities.SelectGenderActivity"/>
+        <activity android:name=".activities.GenderCategoryActivity"/>
+        <activity android:name=".activities.BookActivity"/>
     </application>
 
 </manifest>

@@ -90,15 +90,7 @@ public class HairstyleCategoryActivity extends MvpAppCompatActivity implements H
             }
         });
 
-<<<<<<< HEAD
 
-=======
-        //getting model
-        //произойдет ли здесь утечка памяти из-за передачи Context в Model?
-        ModelComponent component = DaggerModelComponent.builder().contextModule(new ContextModule(this)).build();
-        HairstyleCategoryModel model = component.getHairstyleCategoryModel();
-        presenter.setModel(model);
->>>>>>> 996437adf4200def1542091427be70dffb614a7f
         //load data
         if (!adapter.isLoaded())
             presenter.setCards(intent.getIntExtra("genderId", 0));

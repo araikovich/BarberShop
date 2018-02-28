@@ -23,4 +23,8 @@
         <item name="color">@android:color/black</item>
     </style>
 
+    <style name="Test">
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
 </resources>

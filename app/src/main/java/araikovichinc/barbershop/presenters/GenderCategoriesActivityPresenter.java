@@ -16,21 +16,18 @@ import araikovichinc.barbershop.callbacks.LoadCallBack;
 import araikovichinc.barbershop.mvp.views.GenderCategoriesFragmentView;
 import araikovichinc.barbershop.pojo.GenderCard;
 import araikovichinc.barbershop.repository.GenderCardRepository;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by Tigran on 12.02.2018.
  */
 
 @InjectViewState
-public class GenderCategoriesFragmentPresenter extends MvpPresenter<GenderCategoriesFragmentView> {
+public class GenderCategoriesActivityPresenter extends MvpPresenter<GenderCategoriesFragmentView> {
 
     @Inject
     GenderCardRepository repository;
 
-    public GenderCategoriesFragmentPresenter(){
+    public GenderCategoriesActivityPresenter(){
         MyApp.getModelComponent().inject(this);
     }
 
@@ -45,13 +42,13 @@ public class GenderCategoriesFragmentPresenter extends MvpPresenter<GenderCatego
     }
 
     public void loadData(){
-        getViewState().setProgress(View.VISIBLE);
+        getViewState().setProgressVisibility(View.VISIBLE);
         getViewState().setRefreshVisibility(View.GONE);
         repository.getCards(new LoadCallBack<ArrayList<GenderCard>>() {
             @Override
             public void onLoadSuccess(ArrayList<GenderCard> result) {
                 getViewState().setAdapter(result);
-                getViewState().setProgress(View.GONE);
+                getViewState().setProgressVisibility(View.GONE);
             }
 
             @Override

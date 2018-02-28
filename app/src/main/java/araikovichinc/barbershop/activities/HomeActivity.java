@@ -1,5 +1,6 @@
 package araikovichinc.barbershop.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -55,8 +56,8 @@ public class HomeActivity extends MvpAppCompatActivity implements NavigationView
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         presenter.changePage(item.getItemId());
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        //DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        //drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
@@ -77,6 +78,18 @@ public class HomeActivity extends MvpAppCompatActivity implements NavigationView
         //navigation view
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public void onGenderActivity() {
+        Intent intent = new Intent(HomeActivity.this, GenderCategoryActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBookActivity() {
+        Intent intent = new Intent(HomeActivity.this, BookActivity.class);
+        startActivity(intent);
     }
 
     @Override

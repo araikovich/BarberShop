@@ -15,7 +15,7 @@ import araikovichinc.barbershop.pojo.GenderCard;
 public interface GenderCategoriesFragmentView extends MvpView {
     void setTitle(String title);
     void setAdapter(ArrayList<GenderCard> cards);
-    void setProgress(int visibility);
+    void setProgressVisibility(int visibility);
     @StateStrategyType(SkipStrategy.class)
     void nextActivity(int genderId, String title);
     void showToast(String toast);
