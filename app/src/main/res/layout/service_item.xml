@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:id="@+id/service_card"
+    android:background="@color/colorBlack">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/service_title"
+        android:textSize="30sp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="15dp"
+        android:textColor="@color/colorWhite"
+        android:text="депиляция"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/service_price"
+        android:textSize="30sp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="15dp"
+        android:textColor="@color/colorWhite"
+        android:layout_toStartOf="@id/service_icon"
+        android:text="200"/>
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/hrivnia"
+        android:id="@+id/service_icon"/>
+</RelativeLayout>

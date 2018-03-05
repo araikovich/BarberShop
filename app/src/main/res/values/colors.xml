@@ -8,4 +8,6 @@
     <color name="colorRed">#FFFF0004</color>
     <color name="colorBlackShadow">#80000000</color>
     <color name="colorTransparent">#00000000</color>
+    <color name="colorLiteBlack">#FF101010</color>
+    <color name="colorLightWhite">#1EFFFFFF</color>
 </resources>

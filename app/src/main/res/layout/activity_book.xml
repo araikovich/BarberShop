@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:fitsSystemWindows="false">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -26,7 +27,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:elevation="18dp">
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
@@ -46,7 +48,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:text="Выберите пол"
+                            android:text="@string/select_gender"
+                            android:textSize="20sp"
                             android:id="@+id/select_gender_btn"
                             android:gravity="start|center_vertical"
                             android:paddingStart="60dp"
@@ -61,7 +64,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:text="Выберите дату"
+                            android:text="@string/select_date"
+                            android:textSize="20sp"
                             android:id="@+id/select_date_btn"
                             android:gravity="start|center_vertical"
                             android:paddingStart="60dp"
@@ -101,7 +105,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:text="Выберите мастера"
+                            android:text="@string/select_master"
+                            android:textSize="20sp"
                             android:id="@+id/select_hairdresser_btn"
                             android:gravity="start|center_vertical"
                             android:paddingStart="60dp"
@@ -116,7 +121,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="1"
-                            android:text="Выберите услуги"
+                            android:text="@string/select_service"
+                            android:textSize="20sp"
                             android:id="@+id/select_service_btn"
                             android:gravity="start|center_vertical"
                             android:paddingStart="60dp"
@@ -179,8 +185,9 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="7dp"
+                    android:id="@+id/total_sum"
                     android:layout_toLeftOf="@+id/uan_img"
-                    android:text="500"
+                    android:text="0"
                     android:textColor="@color/colorBlack"
                     android:textSize="20sp" />
 
@@ -194,19 +201,21 @@
                     android:src="@drawable/hrivnia"/>
             </RelativeLayout>
 
-            <info.hoang8f.widget.FButton
+            <Button
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="15dp"
                 android:layout_marginTop="15dp"
                 android:text="Подтвердить"
-                app:buttonColor="@color/colorBlack"
+                android:id="@+id/confirm_reservation"
+                android:background="@color/colorBlack"
                 android:textColor="@color/colorWhite"
-                app:shadowEnabled="true"
-                app:cornerRadius="30dp"/>
+                />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
     <include layout="@layout/bottom_sheet_gender"/>
     <include layout="@layout/bottom_sheet_calendar"/>
+    <include layout="@layout/bottom_sheet_hairdressers"/>
+    <include layout="@layout/bottom_sheet_service"/>
 </android.support.design.widget.CoordinatorLayout>

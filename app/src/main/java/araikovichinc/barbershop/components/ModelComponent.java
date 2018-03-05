@@ -3,6 +3,7 @@ package araikovichinc.barbershop.components;
 import araikovichinc.barbershop.modules.ApiModule;
 import araikovichinc.barbershop.modules.ContextModule;
 import araikovichinc.barbershop.modules.DataBaseModule;
+import araikovichinc.barbershop.presenters.BookActivityPresenter;
 import araikovichinc.barbershop.presenters.GenderCategoriesActivityPresenter;
 import araikovichinc.barbershop.presenters.HairstyleCategoryActivityPresenter;
 import araikovichinc.barbershop.presenters.HairstyleDetailActivityPresenter;
@@ -17,4 +18,5 @@ public interface ModelComponent {
     void inject(HairstyleCategoryActivityPresenter presenter);
     void inject(HairstyleDetailActivityPresenter presenter);
     void inject(GenderCategoriesActivityPresenter presenter);
+    void inject(BookActivityPresenter presenter);
 }

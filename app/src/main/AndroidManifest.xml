@@ -26,6 +26,7 @@
         <activity android:name=".activities.HairstyleDetailActivity"/>
         <activity android:name=".activities.GenderCategoryActivity"/>
         <activity android:name=".activities.BookActivity"/>
+        <activity android:name=".activities.SelectTimeActivity"/>
     </application>
 
 </manifest>

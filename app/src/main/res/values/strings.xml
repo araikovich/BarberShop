@@ -16,4 +16,11 @@
     <string name="man">Мужской</string>
     <string name="woman">Женский</string>
     <string name="gender_not_selected">Выберите пол!</string>
+    <string name="connection_error">Проблемы с сетью :(</string>
+    <string name="master">Мастер</string>
+    <string name="select_gender">Выберите пол</string>
+    <string name="select_master">Выберите мастера</string>
+    <string name="select_service">Выберите услуги</string>
+    <string name="insert_data">Заполните поля</string>
+    <string name="insert_all_data">Заполните все поля!</string>
 </resources>
