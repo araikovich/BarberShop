@@ -20,14 +20,18 @@ public class ServiceModel implements Serializable {
     @SerializedName("price")
     @Expose
     int price;
+    @SerializedName("time")
+    @Expose
+    int time;
     @SerializedName("id")
     @Expose
     int id;
 
-    public ServiceModel(String title, int price, int id) {
+    public ServiceModel(String title, int price, int id, int time) {
         this.title = title;
         this.price = price;
         this.id = id;
+        this.time = time;
     }
 
     public ServiceModel(){}
@@ -54,5 +58,13 @@ public class ServiceModel implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
     }
 }

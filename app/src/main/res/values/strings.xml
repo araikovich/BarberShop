@@ -23,4 +23,6 @@
     <string name="select_service">Выберите услуги</string>
     <string name="insert_data">Заполните поля</string>
     <string name="insert_all_data">Заполните все поля!</string>
+    <string name="select_time">Выберите время</string>
+    <string name="next">Далее</string>
 </resources>

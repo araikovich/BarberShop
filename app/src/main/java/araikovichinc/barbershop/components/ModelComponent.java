@@ -7,6 +7,7 @@ import araikovichinc.barbershop.presenters.BookActivityPresenter;
 import araikovichinc.barbershop.presenters.GenderCategoriesActivityPresenter;
 import araikovichinc.barbershop.presenters.HairstyleCategoryActivityPresenter;
 import araikovichinc.barbershop.presenters.HairstyleDetailActivityPresenter;
+import araikovichinc.barbershop.presenters.SelectTimeActivityPresenter;
 import dagger.Component;
 
 /**
@@ -19,4 +20,5 @@ public interface ModelComponent {
     void inject(HairstyleDetailActivityPresenter presenter);
     void inject(GenderCategoriesActivityPresenter presenter);
     void inject(BookActivityPresenter presenter);
+    void inject(SelectTimeActivityPresenter presenter);
 }

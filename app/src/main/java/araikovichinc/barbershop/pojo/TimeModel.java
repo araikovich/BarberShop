@@ -9,35 +9,23 @@ import com.google.gson.annotations.SerializedName;
 
 public class TimeModel {
     @Expose
-    @SerializedName("tome_from_hours")
-    int timeFromHours;
+    @SerializedName("time_from_hours")
+    private int timeFromHours;
     @Expose
-    @SerializedName("tome_to_min")
-    int timeToMin;
+    @SerializedName("time_to_min")
+    private int timeToMin;
     @Expose
-    @SerializedName("tome_to_hours")
-    int timeToHours;
+    @SerializedName("time_to_hours")
+    private int timeToHours;
     @Expose
-    @SerializedName("tome_from_min")
-    int timeFromMin;
-    @Expose
-    @SerializedName("day")
-    int day;
-    @Expose
-    @SerializedName("month")
-    int month;
-    @Expose
-    @SerializedName("year")
-    int year;
+    @SerializedName("time_from_min")
+    private int timeFromMin;
 
-    public TimeModel(int timeFromHours, int timeToMin, int timeToHours, int timeFromMin, int day, int month, int year) {
+    public TimeModel(int timeFromHours, int timeToMin, int timeToHours, int timeFromMin) {
         this.timeFromHours = timeFromHours;
         this.timeToMin = timeToMin;
         this.timeToHours = timeToHours;
         this.timeFromMin = timeFromMin;
-        this.day = day;
-        this.month = month;
-        this.year = year;
     }
 
     public TimeModel(){}
@@ -72,29 +60,5 @@ public class TimeModel {
 
     public void setTimeFromMin(int timeFromMin) {
         this.timeFromMin = timeFromMin;
-    }
-
-    public int getDay() {
-        return day;
-    }
-
-    public void setDay(int day) {
-        this.day = day;
-    }
-
-    public int getMonth() {
-        return month;
-    }
-
-    public void setMonth(int month) {
-        this.month = month;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
     }
 }

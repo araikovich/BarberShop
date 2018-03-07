@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/times_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/times_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/times_toolbar"
+        android:layout_marginTop="20dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <ProgressBar
+        android:id="@+id/times_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:progressBackgroundTint="@color/colorBlack"
+        android:progressDrawable="@color/colorBlack" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/times_refresh"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_refresh"
+        android:visibility="gone"
+        app:civ_border_color="@color/colorBlack"
+        app:civ_border_width="3dp" />
+</RelativeLayout>

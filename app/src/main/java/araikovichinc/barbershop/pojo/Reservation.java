@@ -14,21 +14,21 @@ public class Reservation implements Serializable{
     private int day;
     private int month;
     private int year;
-    private int timeFrom;
-    private int timeTo;
+    private int timeFromHour;
+    private int timeFromMin;
+    private int timeToMin;
+    private int timeToHour;
     private int totalSum;
 
     private HairdresserModel hairdresser;
     private ArrayList<ServiceModel> services;
 
-    public Reservation(int day, int month, int year, int timeFrom, int timeTo, HairdresserModel hairdresser, ArrayList<ServiceModel> services) {
+    public Reservation(int day, int month, int year, HairdresserModel hairdresser, ArrayList<ServiceModel> services) {
         this.day = day;
         this.month = month;
         this.year = year;
         this.hairdresser = hairdresser;
         this.services = services;
-        this.timeFrom = timeFrom;
-        this.timeTo = timeTo;
     }
 
     public Reservation(){
@@ -66,20 +66,37 @@ public class Reservation implements Serializable{
         this.services.add(service);
 
     }
-    public int getTimeFrom() {
-        return timeFrom;
+
+    public int getTimeFromHour() {
+        return timeFromHour;
     }
 
-    public void setTimeFrom(int timeFrom) {
-        this.timeFrom = timeFrom;
+    public void setTimeFromHour(int timeFromHour) {
+        this.timeFromHour = timeFromHour;
     }
 
-    public int getTimeTo() {
-        return timeTo;
+    public int getTimeFromMin() {
+        return timeFromMin;
     }
 
-    public void setTimeTo(int timeTo) {
-        this.timeTo = timeTo;
+    public void setTimeFromMin(int timeFromMin) {
+        this.timeFromMin = timeFromMin;
+    }
+
+    public int getTimeToMin() {
+        return timeToMin;
+    }
+
+    public void setTimeToMin(int timeToMin) {
+        this.timeToMin = timeToMin;
+    }
+
+    public int getTimeToHour() {
+        return timeToHour;
+    }
+
+    public void setTimeToHour(int timeToHour) {
+        this.timeToHour = timeToHour;
     }
 
     public void deleteHairdresser(){
@@ -109,8 +126,8 @@ public class Reservation implements Serializable{
     public void deleteService(int serviceId) {
         for(int i = 0; i<services.size(); i++){
             if(services.get(i).getId() == serviceId){
-                services.remove(i);
                 totalSum-=services.get(i).getPrice();
+                services.remove(i);
                 break;
             }
         }

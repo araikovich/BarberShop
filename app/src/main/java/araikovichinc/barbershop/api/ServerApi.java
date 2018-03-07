@@ -9,6 +9,7 @@ import araikovichinc.barbershop.pojo.HairdresserModel;
 import araikovichinc.barbershop.pojo.HairstyleCategoryCard;
 import araikovichinc.barbershop.pojo.HairstyleDetailCard;
 import araikovichinc.barbershop.pojo.ServiceModel;
+import araikovichinc.barbershop.pojo.TimeModel;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -37,4 +38,8 @@ public interface ServerApi {
     @FormUrlEncoded
     @POST("/Barbershop/GetServiceCategories.php")
     Call<ArrayList<ServiceModel>> getServiceCategories(@Field("gender_id") int genderId);
+
+    @FormUrlEncoded
+    @POST("/Barbershop/GetFreeTime.php")
+    Call<ArrayList<TimeModel>> getFreeTime(@Field("hairdresser_id") int hairdresserId, @Field("total_time") int totalTime);
 }
