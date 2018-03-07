@@ -45,7 +45,7 @@ public class BookActivity extends MvpAppCompatActivity implements View.OnClickLi
 
     @InjectPresenter
     BookActivityPresenter presenter;
-
+    //
 
     Toolbar toolbar;
     Button genderBtn, dateBtn, hairdresserBtn, serviceBtn, nextStepBtn;
