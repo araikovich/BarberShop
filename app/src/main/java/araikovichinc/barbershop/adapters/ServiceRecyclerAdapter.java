@@ -48,7 +48,6 @@ public class ServiceRecyclerAdapter extends RecyclerView.Adapter<ServiceRecycler
     public void onBindViewHolder(ServiceViewHolder holder, int position) {
         Drawable drawable = MyApp.getAppContext().getResources().getDrawable(R.drawable.hrivnia);
         drawable.setColorFilter(MyApp.getAppContext().getResources().getColor(R.color.colorWhite), PorterDuff.Mode.MULTIPLY);
-        holder.icon.setImageDrawable(drawable);
         holder.title.setText(services.get(position).getTitle());
         holder.price.setText(Integer.toString(services.get(position).getPrice()));
         holder.card.setBackgroundColor(MyApp.getAppContext().getResources().getColor(R.color.colorBlack));
@@ -74,7 +73,6 @@ public class ServiceRecyclerAdapter extends RecyclerView.Adapter<ServiceRecycler
     public class ServiceViewHolder extends RecyclerView.ViewHolder {
 
         TextView title, price;
-        ImageView icon;
         RelativeLayout card;
 
         public ServiceViewHolder(View itemView) {
@@ -82,7 +80,6 @@ public class ServiceRecyclerAdapter extends RecyclerView.Adapter<ServiceRecycler
 
             title = (TextView) itemView.findViewById(R.id.service_title);
             price = (TextView) itemView.findViewById(R.id.service_price);
-            icon = (ImageView) itemView.findViewById(R.id.service_icon);
             card = (RelativeLayout) itemView.findViewById(R.id.service_card);
             card.setOnClickListener(new View.OnClickListener() {
                 @Override

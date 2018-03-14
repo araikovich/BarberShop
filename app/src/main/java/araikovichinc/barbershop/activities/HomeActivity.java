@@ -9,6 +9,8 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -16,9 +18,13 @@ import android.view.MenuItem;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
+import java.util.ArrayList;
+
 import araikovichinc.barbershop.R;
+import araikovichinc.barbershop.adapters.SalesRecyclerAdapter;
 import araikovichinc.barbershop.callbacks.OnFragmentInteractionListener;
 import araikovichinc.barbershop.mvp.views.HomeActivityView;
+import araikovichinc.barbershop.pojo.SaleModel;
 import araikovichinc.barbershop.presenters.HomeActivityPresenter;
 
 
@@ -31,6 +37,8 @@ public class HomeActivity extends MvpAppCompatActivity implements NavigationView
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
     NavigationView navigationView;
+    RecyclerView salesRecycler;
+    SalesRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +64,6 @@ public class HomeActivity extends MvpAppCompatActivity implements NavigationView
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         presenter.changePage(item.getItemId());
-        //DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        //drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
@@ -65,6 +71,7 @@ public class HomeActivity extends MvpAppCompatActivity implements NavigationView
     public void initViews(){
         //init toolbar
         toolbar = (Toolbar) findViewById(R.id.home_toolbar);
+        toolbar.setTitle(R.string.Sales);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorBlack));
 
@@ -78,6 +85,13 @@ public class HomeActivity extends MvpAppCompatActivity implements NavigationView
         //navigation view
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //Sales
+        salesRecycler = (RecyclerView)findViewById(R.id.sales_recycler);
+        salesRecycler.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new SalesRecyclerAdapter(getApplicationContext());
+        salesRecycler.setAdapter(adapter);
+        presenter.loadSales();
     }
 
     @Override
@@ -93,11 +107,34 @@ public class HomeActivity extends MvpAppCompatActivity implements NavigationView
     }
 
     @Override
+    public void setSales(ArrayList<SaleModel> sales) {
+        adapter.setSales(sales);
+    }
+
+    @Override
+    public void onFeedbackActivity() {
+        Intent intent = new Intent(HomeActivity.this, FeedbackActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onMapActivity() {
+
+    }
+
+    @Override
+    public void onContactsActivity() {
+
+    }
+
+    @Override
+    public void onMessageActivity() {
+
+    }
+
+    @Override
     public void setFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.home_container, fragment);
-        transaction.commit();
+
     }
 
     @Override

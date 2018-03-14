@@ -7,6 +7,10 @@ import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.SkipStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 
+import java.util.ArrayList;
+
+import araikovichinc.barbershop.pojo.SaleModel;
+
 /**
  * Created by Tigran on 11.02.2018.
  */
@@ -19,4 +23,9 @@ public interface HomeActivityView extends MvpView {
     void initViews();
     void onGenderActivity();
     void onBookActivity();
+    void setSales(ArrayList<SaleModel> sales);
+    void onFeedbackActivity();
+    void onMapActivity();
+    void onContactsActivity();
+    void onMessageActivity();
 }

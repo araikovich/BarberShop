@@ -20,14 +20,18 @@
         android:textSize="30sp"
         android:layout_centerVertical="true"
         android:layout_marginStart="15dp"
+        android:layout_marginEnd="5dp"
         android:textColor="@color/colorWhite"
         android:layout_toStartOf="@id/service_icon"
         android:text="200"/>
-    <ImageView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_centerVertical="true"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:layout_alignBottom="@id/service_price"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/hrivnia"
+        android:text="грн"
+        android:layout_marginEnd="15dp"
+        android:textColor="@color/colorWhite"
         android:id="@+id/service_icon"/>
 </RelativeLayout>

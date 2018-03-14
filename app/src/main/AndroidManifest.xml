@@ -6,9 +6,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/barbershop_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/barbershop_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name=".MyApp">
@@ -28,6 +28,7 @@
         <activity android:name=".activities.BookActivity"/>
         <activity android:name=".activities.SelectTimeActivity"/>
         <activity android:name=".activities.ConfirmReservationActivity"/>
+        <activity android:name=".activities.BookFinishActivity"/>
     </application>
 
 </manifest>

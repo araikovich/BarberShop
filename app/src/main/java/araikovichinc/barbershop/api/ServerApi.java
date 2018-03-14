@@ -8,6 +8,7 @@ import araikovichinc.barbershop.pojo.GenderCard;
 import araikovichinc.barbershop.pojo.HairdresserModel;
 import araikovichinc.barbershop.pojo.HairstyleCategoryCard;
 import araikovichinc.barbershop.pojo.HairstyleDetailCard;
+import araikovichinc.barbershop.pojo.SaleModel;
 import araikovichinc.barbershop.pojo.ServiceModel;
 import araikovichinc.barbershop.pojo.TimeModel;
 import retrofit2.Call;
@@ -42,4 +43,7 @@ public interface ServerApi {
     @FormUrlEncoded
     @POST("/Barbershop/GetFreeTime.php")
     Call<ArrayList<TimeModel>> getFreeTime(@Field("hairdresser_id") int hairdresserId, @Field("total_time") int totalTime);
+
+    @POST("/Barbershop/GetSales.php")
+    Call<ArrayList<SaleModel>> getSales();
 }

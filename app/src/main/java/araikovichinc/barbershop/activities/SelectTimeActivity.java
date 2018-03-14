@@ -76,7 +76,7 @@ public class SelectTimeActivity extends MvpAppCompatActivity implements SelectTi
         adapter.setOnTimeClickListener(new TimesRecyclerAdapter.OnTimeClickListener() {
             @Override
             public void onTimeClick(int timeFromHour, int timeFromMin, int timeToHour, int timeToMin) {
-                //presenter.onNextActivity(timeFromHour, timeFromMin, timeToHour, timeToMin);
+                presenter.onNextActivity(timeFromHour, timeFromMin, timeToHour, timeToMin);
             }
         });
         recyclerView.setAdapter(adapter);

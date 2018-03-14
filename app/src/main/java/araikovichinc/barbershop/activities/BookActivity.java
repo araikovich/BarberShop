@@ -45,7 +45,6 @@ public class BookActivity extends MvpAppCompatActivity implements View.OnClickLi
 
     @InjectPresenter
     BookActivityPresenter presenter;
-    //
 
     Toolbar toolbar;
     Button genderBtn, dateBtn, hairdresserBtn, serviceBtn, nextStepBtn;
@@ -272,5 +271,18 @@ public class BookActivity extends MvpAppCompatActivity implements View.OnClickLi
         startActivity(intent);
     }
 
-
+    @Override
+    public void onBackPressed() {
+        if(genderSheet.getState() == BottomSheetBehavior.STATE_EXPANDED){
+            genderSheet.setState(BottomSheetBehavior.STATE_HIDDEN);
+        }else if(calendarSheet.getState() == BottomSheetBehavior.STATE_EXPANDED){
+            calendarSheet.setState(BottomSheetBehavior.STATE_HIDDEN);
+        }else if(hairdresserSheet.getState() == BottomSheetBehavior.STATE_EXPANDED){
+            hairdresserSheet.setState(BottomSheetBehavior.STATE_HIDDEN);
+        }else if(serviceSheet.getState() == BottomSheetBehavior.STATE_EXPANDED){
+            serviceSheet.setState(BottomSheetBehavior.STATE_HIDDEN);
+        }else {
+            super.onBackPressed();
+        }
+    }
 }

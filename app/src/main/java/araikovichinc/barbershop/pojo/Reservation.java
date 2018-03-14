@@ -2,6 +2,7 @@ package araikovichinc.barbershop.pojo;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -62,9 +63,9 @@ public class Reservation implements Serializable{
     }
 
 
-    public void addSrvice(ServiceModel service){
+    public void addService(ServiceModel service){
         this.services.add(service);
-
+        Log.d("MyLogs", "service added");
     }
 
     public int getTimeFromHour() {

@@ -78,6 +78,7 @@ public class BookActivityPresenter extends MvpPresenter<BookActivityView> {
         loadService(genderId);
         getViewState().clearReservation();
         reservation.getServices().clear();
+        reservation.setTotalSum(0);
         getViewState().updateSum(reservation.getTotalSum());
     }
 
@@ -87,7 +88,7 @@ public class BookActivityPresenter extends MvpPresenter<BookActivityView> {
         getViewState().setDateView(selectedDay);
         getViewState().showDateSheet(BottomSheetBehavior.STATE_HIDDEN);
         reservation.setDay(day.getDay());
-        reservation.setMonth(day.getMonth());
+        reservation.setMonth(day.getMonth() + 1);
         reservation.setYear(day.getYear());
     }
 
@@ -130,7 +131,7 @@ public class BookActivityPresenter extends MvpPresenter<BookActivityView> {
 
     public void addService(ServiceModel service) {
         reservation.setTotalSum(reservation.getTotalSum() + service.getPrice());
-        reservation.addSrvice(service);
+        reservation.addService(service);
         getViewState().setSelectedServiceItem(service);
         getViewState().updateSum(reservation.getTotalSum());
         isServiceSelcted = true;

@@ -57,7 +57,12 @@ public class SelectedServiceRecyclerAdapter extends RecyclerView.Adapter<Selecte
 
     public void clearList(){
         selectedServices.clear();
+        notifyDataSetChanged();
+    }
 
+    public void setSelectedServices(ArrayList<ServiceModel> services){
+        this.selectedServices.clear();
+        this.selectedServices.addAll(services);
         notifyDataSetChanged();
     }
 

@@ -25,7 +25,6 @@ public class TimesRecyclerAdapter extends RecyclerView.Adapter<TimesRecyclerAdap
 
     private ArrayList<TimeModel> times;
     private int pressedPos;
-    private int curPos;
     private OnTimeClickListener onTimeClickListener;
 
     public interface OnTimeClickListener{
@@ -54,7 +53,6 @@ public class TimesRecyclerAdapter extends RecyclerView.Adapter<TimesRecyclerAdap
     }
 
     public void setTimes(ArrayList<TimeModel> times){
-            pressedPos = -1;
             this.times.clear();
             this.times.addAll(times);
             notifyDataSetChanged();

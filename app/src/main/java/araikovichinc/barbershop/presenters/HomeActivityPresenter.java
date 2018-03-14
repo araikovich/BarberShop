@@ -7,10 +7,18 @@ import android.util.Log;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 
+import java.util.ArrayList;
+
+import javax.inject.Inject;
+
+import araikovichinc.barbershop.MyApp;
 import araikovichinc.barbershop.R;
 import araikovichinc.barbershop.activities.GenderCategoryActivity;
 import araikovichinc.barbershop.activities.HomeActivity;
+import araikovichinc.barbershop.callbacks.LoadCallBack;
 import araikovichinc.barbershop.mvp.views.HomeActivityView;
+import araikovichinc.barbershop.pojo.SaleModel;
+import araikovichinc.barbershop.repository.SalesModelRepository;
 
 /**
  * Created by Tigran on 11.02.2018.
@@ -19,11 +27,12 @@ import araikovichinc.barbershop.mvp.views.HomeActivityView;
 @InjectViewState
 public class HomeActivityPresenter extends MvpPresenter<HomeActivityView> {
 
-    public HomeActivityPresenter(){
-        Log.d("MyLogs", "HomeActivityPresenter");
-    }
+    @Inject
+    SalesModelRepository repository;
 
-    int currPage;
+    public HomeActivityPresenter(){
+        MyApp.getModelComponent().inject(this);
+    }
 
     public void changePage(int itemId){
         switch (itemId){
@@ -37,7 +46,7 @@ public class HomeActivityPresenter extends MvpPresenter<HomeActivityView> {
 
                 break;
             case R.id.nav_feedback:
-
+                getViewState().onFeedbackActivity();
                 break;
             case R.id.nav_contacts:
 
@@ -48,4 +57,17 @@ public class HomeActivityPresenter extends MvpPresenter<HomeActivityView> {
         }
     }
 
+    public void loadSales(){
+        repository.loadSales(new LoadCallBack<ArrayList<SaleModel>>() {
+            @Override
+            public void onLoadSuccess(ArrayList<SaleModel> result) {
+                getViewState().setSales(result);
+            }
+
+            @Override
+            public void onFail(String message) {
+
+            }
+        });
+    }
 }

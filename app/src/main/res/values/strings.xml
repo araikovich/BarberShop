@@ -25,4 +25,7 @@
     <string name="insert_all_data">Заполните все поля!</string>
     <string name="select_time">Выберите время</string>
     <string name="next">Далее</string>
+    <string name="confirm_reservation">Подтвердите Ваш заказ</string>
+    <string name="look_booking">Посмотреть Ваши записи, а так же отменить бронирование вы можетете во вкладке "Мои записи"</string>
+    <string name="Sales">Акции</string>
 </resources>
