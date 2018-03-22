@@ -4,6 +4,7 @@ import araikovichinc.barbershop.modules.ApiModule;
 import araikovichinc.barbershop.modules.ContextModule;
 import araikovichinc.barbershop.modules.DataBaseModule;
 import araikovichinc.barbershop.presenters.BookActivityPresenter;
+import araikovichinc.barbershop.presenters.FeedbackActivityPresenter;
 import araikovichinc.barbershop.presenters.GenderCategoriesActivityPresenter;
 import araikovichinc.barbershop.presenters.HairstyleCategoryActivityPresenter;
 import araikovichinc.barbershop.presenters.HairstyleDetailActivityPresenter;
@@ -23,4 +24,5 @@ public interface ModelComponent {
     void inject(BookActivityPresenter presenter);
     void inject(SelectTimeActivityPresenter presenter);
     void inject(HomeActivityPresenter presenter);
+    void inject(FeedbackActivityPresenter presenter);
 }

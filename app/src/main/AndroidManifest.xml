@@ -29,6 +29,7 @@
         <activity android:name=".activities.SelectTimeActivity"/>
         <activity android:name=".activities.ConfirmReservationActivity"/>
         <activity android:name=".activities.BookFinishActivity"/>
+        <activity android:name=".activities.FeedbackActivity"/>
     </application>
 
 </manifest>

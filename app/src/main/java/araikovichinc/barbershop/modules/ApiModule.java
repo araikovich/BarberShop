@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
 public class ApiModule {
-    public final String baseUrl = "http://192.168.1.3";
+    public final String baseUrl = "http://192.168.1.2";
 
     @Provides
     public ServerApi getServerApi(Retrofit retrofit){

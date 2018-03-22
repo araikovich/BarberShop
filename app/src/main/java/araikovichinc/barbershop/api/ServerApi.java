@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
+import araikovichinc.barbershop.pojo.FeedbackModel;
 import araikovichinc.barbershop.pojo.GenderCard;
 import araikovichinc.barbershop.pojo.HairdresserModel;
 import araikovichinc.barbershop.pojo.HairstyleCategoryCard;
@@ -46,4 +47,7 @@ public interface ServerApi {
 
     @POST("/Barbershop/GetSales.php")
     Call<ArrayList<SaleModel>> getSales();
+
+    @POST("/Barbershop/GetFeedback.php")
+    Call<ArrayList<FeedbackModel>> getFeedback();
 }

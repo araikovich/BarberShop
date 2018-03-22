@@ -27,4 +27,10 @@
         <item name="android:textColor">@color/colorWhite</item>
     </style>
 
+    <style name="FeedbackRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/feedback_rating_bar</item>
+        <item name="android:minHeight">16dip</item>
+        <item name="android:maxHeight">16dip</item>
+    </style>
+
 </resources>
