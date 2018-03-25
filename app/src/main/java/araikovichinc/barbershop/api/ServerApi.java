@@ -13,6 +13,7 @@ import araikovichinc.barbershop.pojo.SaleModel;
 import araikovichinc.barbershop.pojo.ServiceModel;
 import araikovichinc.barbershop.pojo.TimeModel;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
@@ -50,4 +51,10 @@ public interface ServerApi {
 
     @POST("/Barbershop/GetFeedback.php")
     Call<ArrayList<FeedbackModel>> getFeedback();
+
+    @FormUrlEncoded
+    @POST("/Barbershop/AddFeedback.php")
+    Call<Integer> saveFeedback(@Field("rating") int rating, @Field("title") String title,
+                               @Field("text") String text, @Field("day") int day,
+                               @Field("month") int month, @Field("year") int year);
 }

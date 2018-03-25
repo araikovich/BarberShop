@@ -30,6 +30,7 @@
         <activity android:name=".activities.ConfirmReservationActivity"/>
         <activity android:name=".activities.BookFinishActivity"/>
         <activity android:name=".activities.FeedbackActivity"/>
+        <activity android:name=".activities.AddFeedbackActivity"/>
     </application>
 
 </manifest>

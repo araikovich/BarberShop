@@ -33,4 +33,16 @@
         <item name="android:maxHeight">16dip</item>
     </style>
 
+    <style name="AddFeedbackRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/add_feedback_rating_bar</item>
+        <item name="android:minHeight">64dip</item>
+        <item name="android:maxHeight">64dip</item>
+    </style>
+
+    <style name="Theme.EditText.Custom" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">@color/colorBlack</item>
+        <item name="colorControlActivated">@color/colorBlack</item>
+        <item name="colorControlHighlight">@color/colorBlack</item>
+    </style>
+
 </resources>

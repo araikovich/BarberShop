@@ -28,4 +28,8 @@
     <string name="confirm_reservation">Подтвердите Ваш заказ</string>
     <string name="look_booking">Посмотреть Ваши записи, а так же отменить бронирование вы можетете во вкладке "Мои записи"</string>
     <string name="Sales">Акции</string>
+    <string name="add_rating">Оцените нас от 1 до 5</string>
+    <string name="add_title">Дайте заголовок Вашему отзыву</string>
+    <string name="add_text">Напишите отзыв</string>
+    <string name="feedback_saved">Отзыв отправлен!</string>
 </resources>

@@ -1,5 +1,7 @@
 package araikovichinc.barbershop.repository.remote;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 import javax.inject.Inject;
@@ -44,8 +46,25 @@ public class FeedbackModelRemoteDataSource implements FeedbackDataSource {
     }
 
     @Override
-    public void saveFeedback(FeedbackModel model, OnSaveCallBack callBack) {
+    public void saveFeedback(FeedbackModel model, final OnSaveCallBack callBack) {
+        Call<Integer> call = serverApi.saveFeedback(model.getRating(), model.getTitle(), model.getText(),
+                model.getDay(), model.getMonth(), model.getYear());
+        call.enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if(response.body() == 1){
+                    callBack.onSaved();
+                }else
+                    callBack.onSaveFail();
+                Log.d("MyLogs", "Request sanded" + response.body());
+            }
 
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+                callBack.onSaveFail();
+                Log.d("MyLogs", "Request failed");
+            }
+        });
     }
 
     @Override

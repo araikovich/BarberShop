@@ -45,4 +45,8 @@ public class FeedbackActivityPresenter extends MvpPresenter<FeedbackActivityView
             }
         });
     }
+
+    public void createFeedback() {
+        getViewState().next();
+    }
 }

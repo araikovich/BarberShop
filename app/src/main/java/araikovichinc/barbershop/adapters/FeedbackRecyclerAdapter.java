@@ -38,13 +38,13 @@ public class FeedbackRecyclerAdapter extends RecyclerView.Adapter<FeedbackRecycl
 
     @Override
     public void onBindViewHolder(FeedbackViewHolder holder, int position) {
-        holder.ratingBar.setRating(feedback.get(position).getRating());
-        holder.title.setText(feedback.get(position).getTitle());
-        holder.text.setText(feedback.get(position).getText());
-        Log.d("MyLogs", feedback.get(position).getYear() + "");
-        Date date = new Date(feedback.get(position).getYear(),feedback.get(position).getMonth(),feedback.get(position).getDay(), 0, 0);
+        holder.ratingBar.setRating(feedback.get(feedback.size() - 1 -position).getRating());
+        holder.title.setText(feedback.get(feedback.size() - 1 -position).getTitle());
+        holder.text.setText(feedback.get(feedback.size() - 1 -position).getText());
+        Log.d("MyLogs", feedback.get(feedback.size() - 1 -position).getYear() + "");
+        Date date = new Date(feedback.get(feedback.size() - 1 -position).getYear(),feedback.get(feedback.size() - 1 -position).getMonth(),feedback.get(feedback.size() - 1 -position).getDay(), 0, 0);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM",Locale.US);
-        holder.date.setText(simpleDateFormat.format(date) + "."+ feedback.get(position).getYear());
+        holder.date.setText(simpleDateFormat.format(date) + "."+ feedback.get(feedback.size() - 1 -position).getYear());
     }
 
     @Override

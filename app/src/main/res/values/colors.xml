@@ -10,4 +10,5 @@
     <color name="colorTransparent">#00000000</color>
     <color name="colorLiteBlack">#FF101010</color>
     <color name="colorLightWhite">#1EFFFFFF</color>
+    <color name="colorBlue">#779C9D</color>
 </resources>

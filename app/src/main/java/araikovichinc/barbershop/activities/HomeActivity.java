@@ -3,8 +3,6 @@ package araikovichinc.barbershop.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -22,13 +20,13 @@ import java.util.ArrayList;
 
 import araikovichinc.barbershop.R;
 import araikovichinc.barbershop.adapters.SalesRecyclerAdapter;
-import araikovichinc.barbershop.callbacks.OnFragmentInteractionListener;
+import araikovichinc.barbershop.callbacks.OnAddFeedbackFragmentsActionListener;
 import araikovichinc.barbershop.mvp.views.HomeActivityView;
 import araikovichinc.barbershop.pojo.SaleModel;
 import araikovichinc.barbershop.presenters.HomeActivityPresenter;
 
 
-public class HomeActivity extends MvpAppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, HomeActivityView, OnFragmentInteractionListener {
+public class HomeActivity extends MvpAppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, HomeActivityView{
 
     @InjectPresenter
     HomeActivityPresenter presenter;

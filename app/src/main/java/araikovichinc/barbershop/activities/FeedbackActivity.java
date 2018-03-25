@@ -1,5 +1,6 @@
 package araikovichinc.barbershop.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
@@ -59,7 +60,7 @@ public class FeedbackActivity extends MvpAppCompatActivity implements FeedbackAc
         addFeedbackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                presenter.createFeedback();
             }
         });
 
@@ -108,6 +109,13 @@ public class FeedbackActivity extends MvpAppCompatActivity implements FeedbackAc
 
     @Override
     public void next() {
+        Intent intent = new Intent(FeedbackActivity.this, AddFeedbackActivity.class);
+        startActivity(intent);
+    }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        presenter.loadFeedback();
     }
 }

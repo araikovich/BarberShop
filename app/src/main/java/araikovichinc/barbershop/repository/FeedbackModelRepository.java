@@ -40,8 +40,18 @@ public class FeedbackModelRepository implements FeedbackDataSource {
     }
 
     @Override
-    public void saveFeedback(FeedbackModel model, OnSaveCallBack callBack) {
+    public void saveFeedback(FeedbackModel model, final OnSaveCallBack callBack) {
+        remoteDataSource.saveFeedback(model, new OnSaveCallBack() {
+            @Override
+            public void onSaved() {
+                callBack.onSaved();
+            }
 
+            @Override
+            public void onSaveFail() {
+                callBack.onSaveFail();
+            }
+        });
     }
 
     @Override
