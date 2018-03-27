@@ -32,4 +32,6 @@
     <string name="add_title">Дайте заголовок Вашему отзыву</string>
     <string name="add_text">Напишите отзыв</string>
     <string name="feedback_saved">Отзыв отправлен!</string>
+    <string name="title_activity_where_we_are">Map</string>
+    <string name="here_we_are">Мы здесь</string>
 </resources>

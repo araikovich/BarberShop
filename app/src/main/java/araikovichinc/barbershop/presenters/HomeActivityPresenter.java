@@ -43,13 +43,13 @@ public class HomeActivityPresenter extends MvpPresenter<HomeActivityView> {
                 getViewState().onBookActivity();
                 break;
             case R.id.nav_where_we_are:
-
+                getViewState().onMapActivity();
                 break;
             case R.id.nav_feedback:
                 getViewState().onFeedbackActivity();
                 break;
             case R.id.nav_contacts:
-
+                getViewState().onContactsActivity();
                 break;
             case R.id.nav_question:
 

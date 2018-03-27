@@ -117,12 +117,14 @@ public class HomeActivity extends MvpAppCompatActivity implements NavigationView
 
     @Override
     public void onMapActivity() {
-
+        Intent intent = new Intent(HomeActivity.this, WhereWeAreActivity.class);
+        startActivity(intent);
     }
 
     @Override
     public void onContactsActivity() {
-
+        Intent intent = new Intent(HomeActivity.this, AboutUsActivity.class);
+        startActivity(intent);
     }
 
     @Override
