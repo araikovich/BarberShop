@@ -54,6 +54,8 @@
             android:name=".activities.WhereWeAreActivity"
             android:label="@string/title_activity_where_we_are"></activity>
         <activity android:name=".activities.AboutUsActivity"/>
+        <activity android:name=".activities.MyBooksActivity"/>
+        <activity android:name=".activities.MyBookDetailActivity"/>
     </application>
 
 </manifest>

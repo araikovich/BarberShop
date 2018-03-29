@@ -51,8 +51,8 @@ public class HomeActivityPresenter extends MvpPresenter<HomeActivityView> {
             case R.id.nav_contacts:
                 getViewState().onContactsActivity();
                 break;
-            case R.id.nav_question:
-
+            case R.id.nav_my_books:
+                getViewState().onMyBooksActivity();
                 break;
         }
     }

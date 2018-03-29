@@ -12,6 +12,16 @@ import java.util.ArrayList;
  */
 
 public class Reservation implements Serializable{
+    private String reservationId;
+
+    public String getReservationId() {
+        return reservationId;
+    }
+
+    public void setReservationId(String reservationId) {
+        this.reservationId = reservationId;
+    }
+
     private int day;
     private int month;
     private int year;

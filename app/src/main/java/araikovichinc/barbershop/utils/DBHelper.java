@@ -35,6 +35,23 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("create table detail ("
                 + "hairstyleId,"
                 + "imageUrl text" + ");");
+        db.execSQL("create table reservation ("
+                + "reservationId,"
+                + "day,"
+                + "month,"
+                + "year,"
+                + "timeFromHour,"
+                + "timeFromMin,"
+                + "timeToMin,"
+                + "timeToHour,"
+                + "totalSum,"
+                + "hairdresserName,"
+                + "hairdresserPhoto" + ");");
+        db.execSQL("create table my_services ("
+                + "reservationId,"
+                + "title,"
+                + "price,"
+                + "time" + ");");
     }
 
     @Override

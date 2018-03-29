@@ -34,4 +34,6 @@
     <string name="feedback_saved">Отзыв отправлен!</string>
     <string name="title_activity_where_we_are">Map</string>
     <string name="here_we_are">Мы здесь</string>
+    <string name="my_books">Мои записи</string>
+    <string name="more">Подробнее</string>
 </resources>

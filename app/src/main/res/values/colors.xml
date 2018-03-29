@@ -11,4 +11,6 @@
     <color name="colorLiteBlack">#FF101010</color>
     <color name="colorLightWhite">#1EFFFFFF</color>
     <color name="colorBlue">#779C9D</color>
+    <color name="colorDarkBlackShadow">#c3000000</color>
+    <color name="colorLiteGrey">#C35E5E5E</color>
 </resources>

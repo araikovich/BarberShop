@@ -128,8 +128,9 @@ public class HomeActivity extends MvpAppCompatActivity implements NavigationView
     }
 
     @Override
-    public void onMessageActivity() {
-
+    public void onMyBooksActivity() {
+        Intent intent = new Intent(HomeActivity.this, MyBooksActivity.class);
+        startActivity(intent);
     }
 
     @Override

@@ -27,5 +27,5 @@ public interface HomeActivityView extends MvpView {
     void onFeedbackActivity();
     void onMapActivity();
     void onContactsActivity();
-    void onMessageActivity();
+    void onMyBooksActivity();
 }
